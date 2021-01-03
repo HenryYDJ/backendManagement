@@ -1,19 +1,25 @@
+
 # Ant Design Pro
 
 This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
 
 ## Environment Prepare
 
+node version>12.0
+
+Install `yarn' and `tyarn`:
+
+npm install yarn tyarn -g
+
+Install `umi`
+
+tyarn -g i umi
+
+
 Install `node_modules`:
 
 ```bash
-npm install
-```
-
-or
-
-```bash
-yarn
+tyarn
 ```
 
 ## Provided Scripts
