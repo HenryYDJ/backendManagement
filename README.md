@@ -5,18 +5,24 @@ This project is initialized with [Ant Design Pro](https://pro.ant.design). Follo
 
 ## Environment Prepare
 
-node version>12.0
+node version>12.0 (保证你的node版本大于12)
 
-Install `yarn' and `tyarn`:
+来到根目录命令行界面，按照以下步骤执行
+
+STEP 1: Install `yarn` and `tyarn`: (安装依赖需要)
+
+```bash
 
 npm install yarn tyarn -g
+```
 
-Install `umi`
+STEP 2: Install `umi`:（ant-design需要）
 
+```bash
 tyarn -g i umi
+```
 
-
-Install `node_modules`:
+STEP 3:Install `node_modules`:（安装依赖）
 
 ```bash
 tyarn
@@ -30,7 +36,7 @@ Scripts provided in `package.json`. It's safe to modify or add additional script
 
 ### Start project
 
-```bash
+```bash（启动项目）
 npm start
 ```
 
