@@ -19,7 +19,7 @@ npm install yarn tyarn -g
 STEP 2: Install `umi`:（ant-design需要）
 
 ```bash
-tyarn -g i umi
+tyarn global add umi
 ```
 
 STEP 3:Install `node_modules`:（安装依赖）
