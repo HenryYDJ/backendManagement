@@ -1,11 +1,10 @@
-
 # Ant Design Pro
 
 This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
 
 ## Environment Prepare
 
-node version>12.0 (保证你的node版本大于12)
+node version>12.0 (保证你的 node 版本大于 12)
 
 来到根目录命令行界面，按照以下步骤执行
 
@@ -16,10 +15,10 @@ STEP 1: Install `yarn` and `tyarn`: (安装依赖需要)
 npm install yarn tyarn -g
 ```
 
-STEP 2: Install `umi`:（ant-design需要）
+STEP 2: Install `umi`:（ant-design 需要）
 
 ```bash
-tyarn -g i umi
+tyarn global add umi
 ```
 
 STEP 3:Install `node_modules`:（安装依赖）

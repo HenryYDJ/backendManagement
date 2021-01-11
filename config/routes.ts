@@ -1,4 +1,4 @@
-﻿export default [
+export default [
   {
     path: '/user',
     layout: false,
@@ -10,6 +10,12 @@
             name: 'login',
             path: '/user/login',
             component: './User/login',
+          },
+          {
+            name: 'register',
+            icon: 'smile',
+            path: '/user/register',
+            component: './User/UserRegister',
           },
         ],
       },
@@ -45,6 +51,12 @@
   {
     path: '/',
     redirect: '/welcome',
+  },
+  {
+    name: '基础表单',
+    icon: 'smile',
+    path: '/formbasicform',
+    component: './User/FormBasicForm',
   },
   {
     component: './404',
