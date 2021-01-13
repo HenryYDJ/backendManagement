@@ -41,16 +41,20 @@ export const checkPass = (val: string) => {
       msg: '纯大写',
     },
   };
+  const notMatch = {
+    success: false,
+    msg: '密码至少包含数字、小写字母、大写字母、特殊字符其中三种。',
+  };
   const notAllow = {
     containBlankSpace: {
       success: false,
       reg: /^.*[\s].*$/i,
-      msg: '不合法登录密码仅支持字母、数字或字符，不可包含空格',
+      msg: '不合法登录密码，仅支持字母、数字或字符，不可包含空格',
     },
     containCNChar: {
       success: false,
       reg: /^.*[\u4e00-\u9fa5].*/i,
-      msg: '不合法登录密码仅支持字母、数字或字符',
+      msg: '不合法登录密码，仅支持字母、数字或字符',
     },
   };
   if (val.length < 10) {
@@ -67,15 +71,12 @@ export const checkPass = (val: string) => {
       (allMap[2].reg.test(val) && allMap[3].reg.test(val) && allMap[4].reg.test(val))
     )
   ) {
-    return {
-      success: false,
-      msg: '密码至少包含数字、小写字母、大写字母、特殊字符其中三种。',
-    };
+    return notMatch;
   }
   let error: any;
   Object.keys(notAllow).forEach((k) => {
     if (!error && notAllow[k].reg.test(val)) {
-      error = allMap[k];
+      error = notAllow[k];
     }
   });
   if (error) {
