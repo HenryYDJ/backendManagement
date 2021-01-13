@@ -6,6 +6,7 @@ import { useIntl, Link, history, FormattedMessage, SelectLang, useModel } from '
 import Footer from '@/components/Footer';
 import type { LoginParamsType } from '@/services/login';
 import { fakeAccountLogin } from '@/services/login';
+import { checkPass } from '@/utils/utils';
 
 import styles from './index.less';
 
@@ -129,7 +130,7 @@ const Login: React.FC = () => {
                   }}
                   placeholder={intl.formatMessage({
                     id: 'pages.login.username.placeholder',
-                    defaultMessage: '用户名: admin or user',
+                    defaultMessage: '用户名: admin@qq.com',
                   })}
                   rules={[
                     {
@@ -160,7 +161,7 @@ const Login: React.FC = () => {
                   }}
                   placeholder={intl.formatMessage({
                     id: 'pages.login.password.placeholder',
-                    defaultMessage: '密码: ant.design',
+                    defaultMessage: '密码: Ant.design',
                   })}
                   rules={[
                     {
@@ -172,6 +173,15 @@ const Login: React.FC = () => {
                         />
                       ),
                     },
+                    () => ({
+                      validator(_, value) {
+                        const result = checkPass(value);
+                        if (result.success === true) {
+                          return Promise.resolve();
+                        }
+                        return Promise.reject(result.msg);
+                      },
+                    }),
                   ]}
                 />
               </>
