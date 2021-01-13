@@ -137,7 +137,16 @@ const Login: React.FC = () => {
                       message: (
                         <FormattedMessage
                           id="pages.login.username.required"
-                          defaultMessage="请输入用户名!"
+                          defaultMessage="请输入手机号或邮箱！"
+                        />
+                      ),
+                    },
+                    {
+                      pattern: /^(1\d{10})|(([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3})$/,
+                      message: (
+                        <FormattedMessage
+                          id="pages.login.phoneNumberOrEmail.invalid"
+                          defaultMessage="账号输入格式错误！"
                         />
                       ),
                     },

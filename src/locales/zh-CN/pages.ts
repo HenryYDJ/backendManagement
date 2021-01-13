@@ -11,6 +11,7 @@ export default {
   'pages.login.phoneNumber.placeholder': '请输入手机号！',
   'pages.login.phoneNumber.required': '手机号是必填项！',
   'pages.login.phoneNumber.invalid': '不合法的手机号！',
+  'pages.login.phoneNumberOrEmail.invalid': '账号输入格式错误！',
   'pages.login.captcha.placeholder': '请输入验证码！',
   'pages.login.captcha.required': '验证码是必填项！',
   'pages.login.phoneLogin.getVerificationCode': '获取验证码',
