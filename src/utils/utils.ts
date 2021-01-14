@@ -49,12 +49,12 @@ export const checkPass = (val: string) => {
     containBlankSpace: {
       success: false,
       reg: /^.*[\s].*$/i,
-      msg: '不合法登录密码，仅支持字母、数字或字符，不可包含空格',
+      msg: '密码仅支持字母、数字或字符，不可包含空格',
     },
     containCNChar: {
       success: false,
       reg: /^.*[\u4e00-\u9fa5].*/i,
-      msg: '不合法登录密码，仅支持字母、数字或字符',
+      msg: '密码仅支持字母、数字或字符',
     },
   };
   if (val.length < 10) {
@@ -83,4 +83,27 @@ export const checkPass = (val: string) => {
     return error;
   }
   return { success: true };
+};
+
+export const checkUserName = (val: string) => {
+  if (val === '') {
+    return { success: true };
+  }
+  if (val.length < 1 || val.length > 31) {
+    return {
+      success: false,
+      msg: '用户名长度为2~30。',
+    };
+  }
+  const notMatch = {
+    success: false,
+    msg: '用户名只能包含中文、字母、以及空格.·_-五种特殊字符。',
+  };
+  const nameReg = /^[a-zA-Z\u4e00-\u9fa5 _.·-]*$/;
+  if (!nameReg.test(val)) {
+    return notMatch;
+  }
+  return {
+    success: true,
+  };
 };

@@ -1,5 +1,5 @@
-import { checkUserName, checkPass } from '@/utils/utils';
-import { Form, Button, Input, Popover, Progress, Select, message } from 'antd';
+import { checkUserName } from '@/utils/utils';
+import { Form, Button, Col, Input, Popover, Progress, Row, Select, message } from 'antd';
 import type { FC } from 'react';
 import React, { useState, useEffect } from 'react';
 import type { Dispatch } from 'umi';
@@ -57,6 +57,7 @@ export type UserRegisterParams = {
 };
 
 const UserRegister: FC<UserRegisterProps> = ({ submitting, dispatch, userAndUserRegister }) => {
+  const [count, setcount]: [number, any] = useState(0);
   const [visible, setvisible]: [boolean, any] = useState(false);
   const [prefix, setprefix]: [string, any] = useState('86');
   const [popover, setpopover]: [boolean, any] = useState(false);
@@ -84,12 +85,23 @@ const UserRegister: FC<UserRegisterProps> = ({ submitting, dispatch, userAndUser
     },
     [],
   );
+  const onGetCaptcha = () => {
+    let counts = 59;
+    setcount(counts);
+    interval = window.setInterval(() => {
+      counts -= 1;
+      setcount(counts);
+      if (counts === 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+  };
   const getPasswordStatus = () => {
     const value = form.getFieldValue('password');
-    if (value && value.length > 15) {
+    if (value && value.length > 9) {
       return 'ok';
     }
-    if (value && value.length > 9) {
+    if (value && value.length > 5) {
       return 'pass';
     }
     return 'poor';
@@ -122,8 +134,7 @@ const UserRegister: FC<UserRegisterProps> = ({ submitting, dispatch, userAndUser
       setvisible(!!value);
     }
     setpopover(!popover);
-    const result = checkPass(value);
-    if (result.success === false) {
+    if (value.length < 6) {
       return promise.reject('');
     }
     if (value && confirmDirty) {
@@ -285,7 +296,7 @@ const UserRegister: FC<UserRegisterProps> = ({ submitting, dispatch, userAndUser
             />
           </FormItem>
         </InputGroup>
-        {/* <Row gutter={8}>
+        <Row gutter={8}>
           <Col span={16}>
             <FormItem
               name="captcha"
@@ -316,7 +327,7 @@ const UserRegister: FC<UserRegisterProps> = ({ submitting, dispatch, userAndUser
                 : formatMessage({ id: 'useranduserregister.register.get-verification-code' })}
             </Button>
           </Col>
-        </Row> */}
+        </Row>
         <FormItem>
           <Button
             size="large"
